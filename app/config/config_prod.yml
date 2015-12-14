@@ -13,3 +13,9 @@ monolog:
             level: debug
         console:
             type:  console
+
+fos_http_cache:
+    proxy_client:
+        varnish:
+            servers: shop.dev
+            base_url: shop.dev
