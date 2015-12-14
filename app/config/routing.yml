@@ -1,0 +1,12 @@
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /%locale%/
+        permanent: true
+
+login_check:
+    path:     /login_check
+
+logout:
+    path:     /logout
