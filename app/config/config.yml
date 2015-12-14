@@ -28,8 +28,8 @@ framework:
     trusted_proxies:    [192.0.0.1]
     session:
         # handler_id set to null will use default session handler from php.ini
-        handler_id:  ~
-    fragments:       ~
+        handler_id:    snc_redis.session.handler
+    fragments:         ~
     http_method_override: true
 
 # Twig Configuration
@@ -80,6 +80,30 @@ payum:
                 password: %paypal.express_checkout.password%
                 signature: %paypal.express_checkout.signature%
                 sandbox: %paypal.express_checkout.sandbox%
+
+snc_redis:
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: redis://localhost
+            logging: %kernel.debug%
+        session:
+            type: predis
+            alias: session
+            dsn: redis://localhost
+            logging: %kernel.debug%
+    session:
+        client: session
+        use_as_default: true
+        ttl: 864000
+    doctrine:
+        metadata_cache:
+            client: default
+            entity_manager: default
+        query_cache:
+            client: default
+            entity_manager: default
 
 fos_http_cache:
     cache_manager:
