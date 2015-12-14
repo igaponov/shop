@@ -62,6 +62,25 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+payum:
+    security:
+        token_storage:
+            Shop\InfrastructureBundle\Model\Token: { doctrine: orm }
+
+    storages:
+        Shop\InfrastructureBundle\Model\Payment: { doctrine: orm }
+
+    gateways:
+        offline:
+            offline: ~
+
+        paypal:
+            paypal_express_checkout_nvp:
+                username: %paypal.express_checkout.username%
+                password: %paypal.express_checkout.password%
+                signature: %paypal.express_checkout.signature%
+                sandbox: %paypal.express_checkout.sandbox%
+
 event_bus:
     logging:
         enabled: %kernel.debug%

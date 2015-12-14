@@ -16,3 +16,8 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    paypal.express_checkout.username: name
+    paypal.express_checkout.password: pass
+    paypal.express_checkout.signature: sign
+    paypal.express_checkout.sandbox: true

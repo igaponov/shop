@@ -18,7 +18,8 @@ class AppKernel extends Kernel
             new Shop\InfrastructureBundle\ShopInfrastructureBundle(),
             new SimpleBus\SymfonyBridge\SimpleBusCommandBusBundle(),
             new SimpleBus\SymfonyBridge\SimpleBusEventBusBundle(),
-            new SimpleBus\SymfonyBridge\DoctrineOrmBridgeBundle()
+            new SimpleBus\SymfonyBridge\DoctrineOrmBridgeBundle(),
+            new Payum\Bundle\PayumBundle\PayumBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
