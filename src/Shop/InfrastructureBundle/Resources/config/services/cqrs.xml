@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Query Bus -->
+        <service id="query_bus" alias="simple_bus.query_bus"/>
+        <service id="simple_bus.query_bus"
+                 public="false"
+                 class="SimpleBus\Message\Bus\Middleware\MessageBusSupportingMiddleware">
+            <tag name="message_bus" type="query" middleware_tag="query_bus_middleware"/>
+        </service>
+
+        <service id="simple_bus.query_bus.delegates_to_message_handler_middleware"
+                 public="false"
+                 class="SimpleBus\Message\Handler\DelegatesToMessageHandlerMiddleware">
+            <argument type="service" id="simple_bus.query_bus.query_handler_resolver"/>
+            <tag name="query_bus_middleware" priority="-1000"/>
+        </service>
+
+        <service id="simple_bus.query_bus.class_based_query_name_resolver"
+                 public="false"
+                 class="SimpleBus\Message\Name\ClassBasedNameResolver"/>
+
+        <service id="simple_bus.query_bus.callable_resolver"
+                 public="false"
+                 class="SimpleBus\Message\CallableResolver\ServiceLocatorAwareCallableResolver">
+            <argument type="collection">
+                <argument type="service" id="service_container"/>
+                <argument type="string">get</argument>
+            </argument>
+        </service>
+
+        <service id="simple_bus.query_bus.query_handler_map"
+                 public="false"
+                 class="SimpleBus\Message\CallableResolver\CallableMap">
+            <argument type="collection"/>
+            <argument type="service" id="simple_bus.query_bus.callable_resolver"/>
+        </service>
+
+        <service id="simple_bus.query_bus.query_handler_resolver"
+                 public="false"
+                 class="SimpleBus\Message\Handler\Resolver\NameBasedMessageHandlerResolver">
+            <argument type="service" id="simple_bus.query_bus.class_based_query_name_resolver"/>
+            <argument type="service" id="simple_bus.query_bus.query_handler_map"/>
+        </service>
+
+        <service id="simple_bus.query_bus.finishes_query_before_handling_next_middleware"
+                 public="false"
+                 class="SimpleBus\Message\Bus\Middleware\FinishesHandlingMessageBeforeHandlingNext">
+            <tag name="query_bus_middleware" priority="1000"/>
+        </service>
+        <!-- -->
+    </services>
+    
+</container>

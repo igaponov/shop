@@ -61,3 +61,11 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+event_bus:
+    logging:
+        enabled: %kernel.debug%
+
+command_bus:
+    logging:
+        enabled: %kernel.debug%
