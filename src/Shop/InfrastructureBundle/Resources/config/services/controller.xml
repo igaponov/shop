@@ -46,5 +46,13 @@
             <argument id="command_bus" type="service"/>
             <argument id="router" type="service"/>
         </service>
+
+        <service class="Shop\Presentation\Controller\AdminProductController" id="admin_product_controller">
+            <argument id="command_bus" type="service"/>
+            <argument id="query_bus" type="service"/>
+            <argument id="form.factory" type="service"/>
+            <argument id="router" type="service"/>
+            <argument id="templating.engine.twig" type="service"/>
+        </service>
     </services>
 </container>

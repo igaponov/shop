@@ -1,0 +1,74 @@
+{% extends ':admin:base.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            {% trans with {
+            '%from%': pager.currentPageOffsetStart,
+            '%to%': pager.currentPageOffsetend,
+            '%of%': pager.nbResults
+            } %}word.summary{% endtrans %}
+
+            <a href="{{ path('admin_product_create') }}" class="btn btn-primary btn-sm">{% trans %}action.add{% endtrans %}</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>{% trans %}form.label.name{% endtrans %}</th>
+                    <th>{% trans %}form.label.price{% endtrans %}</th>
+                    <th>{% trans %}form.label.available{% endtrans %}</th>
+                    <th>{% trans %}form.label.category{% endtrans %}</th>
+                    <th>{% trans %}form.label.description{% endtrans %}</th>
+                    <th>{% trans %}form.label.updated{% endtrans %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in pager.currentPageResults %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('admin_product', {id: product.id}) }}">
+                                {{ product.name }}
+                            </a>
+                        </td>
+                        <td>{{ product.price | price }}</td>
+                        <td>
+                            {% if product.available %}
+                                <span class="text-success">
+                                    {% trans %}message.in_stock{% endtrans %}
+                                </span>
+                            {% else %}
+                                <span class="text-danger">
+                                    {% trans %}message.out_of_stock{% endtrans %}
+                                </span>
+                            {% endif %}
+                        </td>
+                        <td>{{ product.category.name }}</td>
+                        <td>{{ product.description|slice(0, 100) ~ '...' }}</td>
+                        <td>{{ product.updated|date('Y/m/d') }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-3">
+            {{ form_start(form) }}
+            {% do form.page.setRendered %}
+            {{ form_row(form.query) }}
+            {{ form_row(form.category) }}
+            {{ form_row(form.priceFrom) }}
+            {{ form_row(form.priceTo) }}
+            {{ form_row(form.availability) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    {% if pager.nbPages > 1 %}
+        {{ include(':product:pager.html.twig', {pager: pager, routeName: 'admin_products'}) }}
+    {% endif %}
+
+{% endblock %}

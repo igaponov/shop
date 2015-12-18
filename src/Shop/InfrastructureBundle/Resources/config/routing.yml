@@ -56,3 +56,23 @@ profile:
 payment_done:
     path:     /payment/done
     defaults: { _controller: payment_controller:doneAction }
+
+admin:
+    path: /admin
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: admin_products
+        permanent: true
+
+admin_products:
+    path:     /admin/products
+    methods:  [ GET ]
+    defaults: { _controller: admin_product_controller:indexAction }
+
+admin_product_create:
+    path:     /admin/products/create
+    defaults: { _controller: admin_product_controller:createAction }
+
+admin_product:
+    path:     /admin/products/{id}
+    defaults: { _controller: admin_product_controller:viewAction }

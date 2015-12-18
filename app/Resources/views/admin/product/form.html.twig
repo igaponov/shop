@@ -1,0 +1,39 @@
+{% extends ':admin:base.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div class="col-md-5">
+            {{ form_row(form.name) }}
+            {{ form_row(form.price) }}
+            {{ form_row(form.category) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.available) }}
+            {{ form_row(form.imageUrl) }}
+            {{ form_row(form.submit) }}
+        </div>
+        <div class="col-md-5" id="product_productOptions">
+            {{ form_label(form.productOptions) }}
+            {% for option in form.productOptions %}
+                {{ include(':admin/product:productOptions.html.twig', {option: option.option, value: option.value}) }}
+            {% endfor %}
+            <div class="form-group">
+                <button class="btn btn-info btn-sm" id="product_productOptions_add">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    {% trans %}action.add{% endtrans %}
+                </button>
+            </div>
+            <script type="text/html" id="product_productOptions_prototype">
+                {{ include(':admin/product:productOptions.html.twig', {
+                    option: form.productOptions.vars.prototype.option,
+                    value: form.productOptions.vars.prototype.value
+                }) }}
+            </script>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
