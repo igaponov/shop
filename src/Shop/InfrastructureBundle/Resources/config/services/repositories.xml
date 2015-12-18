@@ -23,6 +23,40 @@
                  factory-method="getRepository">
             <argument type="string">Shop\InfrastructureBundle\Security\User</argument>
         </service>
+
+        <service id="category_view_repository" alias="predis_category_view_repository"/>
+        <service id="dbal_category_view_repository"
+                 public="false"
+                 class="Shop\InfrastructureBundle\Repository\DBAL\DirectoryViewRepository">
+            <argument type="string">categories</argument>
+            <argument type="string">Shop\Domain\Category\CategoryView</argument>
+            <argument type="service" id="doctrine.dbal.default_connection"/>
+        </service>
+        <service id="predis_category_view_repository"
+                 public="false"
+                 class="Shop\InfrastructureBundle\Repository\Predis\DirectoryViewRepository">
+            <argument type="string">categories</argument>
+            <argument type="string">Shop\Domain\Category\CategoryView</argument>
+            <argument type="service" id="snc_redis.default"/>
+            <argument type="service" id="dbal_category_view_repository"/>
+        </service>
+
+        <service id="option_view_repository" alias="predis_option_view_repository"/>
+        <service id="dbal_option_view_repository"
+                 public="false"
+                 class="Shop\InfrastructureBundle\Repository\DBAL\DirectoryViewRepository">
+            <argument type="string">options</argument>
+            <argument type="string">Shop\Domain\Option\OptionView</argument>
+            <argument type="service" id="doctrine.dbal.default_connection"/>
+        </service>
+        <service id="predis_option_view_repository"
+                 public="false"
+                 class="Shop\InfrastructureBundle\Repository\Predis\DirectoryViewRepository">
+            <argument type="string">options</argument>
+            <argument type="string">Shop\Domain\Option\OptionView</argument>
+            <argument type="service" id="snc_redis.default"/>
+            <argument type="service" id="dbal_option_view_repository"/>
+        </service>
     </services>
 
 </container>
