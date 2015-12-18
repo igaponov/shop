@@ -1,0 +1,12 @@
+<ul class="nav nav-pills nav-stacked">
+    {% for category in categories %}
+        <li class="{{ (categoryId is defined and categoryId == category.id) ? 'active' : '' }}">
+            <a href="{{ path('products', {category: category.id} | merge({query: app.request.query.get('query')})) }}">
+                {{ category.name }}
+                {% if category.getProductCount() > 0 %}
+                    <span class="badge pull-right">{{ category.getProductCount() }}</span>
+                {% endif %}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

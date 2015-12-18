@@ -1,0 +1,22 @@
+<p>
+    {% trans with {
+    '%from%': pager.currentPageOffsetStart,
+    '%to%': pager.currentPageOffsetend,
+    '%of%': pager.nbResults
+    } %}word.summary{% endtrans %}
+    <span>
+            {% if query.query %}
+                {% trans %}word.for{% endtrans %}
+                <b>"{{ query.query }}"</b>
+            {% endif %}
+        {% if query.category %}
+            {% trans %}word.in{% endtrans %}
+            <a href="{{ path('products', {category: category.id}) }}">{{ category.name }}</a>
+        {% endif %}
+        </span>
+    {% if (query.query or query.category) %}
+        <span>
+            <a href="{{ path('products') }}" class="text-danger glyphicon glyphicon-remove"></a>
+        </span>
+    {% endif %}
+</p>

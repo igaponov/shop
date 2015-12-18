@@ -5,3 +5,23 @@ login_route:
 user_registration:
     path:     /register
     defaults: { _controller: security_controller:registerAction }
+
+homepage:
+    path:     /
+    methods:  [ GET ]
+    defaults: { _controller: product_controller:indexAction }
+
+products_filter:
+    path:     /products/filter
+    methods:  [ GET ]
+    defaults: { _controller: product_controller:filterAction }
+
+product:
+    path:     /products/{id}
+    methods:  [ GET ]
+    defaults: { _controller: product_controller:viewAction }
+
+products:
+    path:     /products
+    methods:  [ GET ]
+    defaults: { _controller: product_controller:indexAction }

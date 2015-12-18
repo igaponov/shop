@@ -1,0 +1,12 @@
+{{ form_start(form, {attr: {class: 'navbar-form'}}) }}
+    <div class="form-group" style="display: inline;">
+        <div class="input-group" style="display: table;">
+            {{ form_widget(form.category, {attr: {style: 'width: 20%'}}) }}
+            {{ form_widget(form.query, {attr: {style: 'width: 80%'}}) }}
+            {% do form.page.setRendered %}
+            <span class="input-group-btn" style="width:1%;">
+                {{ form_widget(form.submit, {attr: {class: 'btn-success'}}) }}
+            </span>
+        </div><!-- /input-group -->
+    </div>
+{{ form_end(form) }}

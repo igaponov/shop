@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <h3>{% trans %}meta.title.categories{% endtrans %}</h3>
+
+            {{ include(':product:categories.html.twig', {
+                categories: categories,
+                categoryId: query.getCategory()
+            }) }}
+        </div>
+
+        <div class="col-xs-12 col-sm-9 col-md-10 main">
+
+            {{ include(':product:summary.html.twig', {pager: pager, query: query, category: category}) }}
+
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-sm-3 col-md-3 product-details">
+                        <div class="thumbnail">
+                            <a href="{{ path('product', {id: product.id}) }}">
+                                <img src="{{ product.imageUrl }}" alt="{{ product.name }}">
+                            </a>
+
+                            <div class="caption">
+                                <a href="{{ path('product', {id: product.id}) }}" title="{{ product.name }}">
+                                    <h5>{{ product.name|length > 22 ? product.name|slice(0, 22) ~ '...' : product.name }}</h5>
+                                </a>
+
+                                <div class="clearfix h2">
+                                    <b class="pull-left">{{ product.price | price }}</b>
+                                    <button href="#"
+                                            class="btn btn-success btn-sm pull-right add-product"
+                                            data-product="{{ product.id }}"
+                                            data-url="{{ path('add_product') }}">
+                                        {% trans %}action.add_product{% endtrans %}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if pager.nbPages > 1 %}
+                {{ include(':product:pager.html.twig', {pager: pager, routeName: 'products'}) }}
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

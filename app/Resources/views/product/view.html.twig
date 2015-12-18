@@ -1,0 +1,49 @@
+{% extends '::content.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="well">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="thumbnail">
+                        <img src="{{ product.imageUrl }}" alt="{{ product.name }}">
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <div class="page-header">
+                        <h3>{{ product.name }}</h3>
+                    </div>
+                    <h4>
+                        {% trans %}form.label.category{% endtrans %}:
+                        <a href="{{ path('products', {category: product.category.id}) }}">
+                            {{ product.category.name }}
+                        </a>
+                    </h4>
+
+                    <h4>
+                        {% trans %}form.label.price{% endtrans %}:
+                        <span class="lead text-primary">{{ product.price | price }}</span>
+                    </h4>
+
+                    <h4>{% trans %}form.label.description{% endtrans %}:</h4>
+                    <p>{{ product.description }}</p>
+
+                    <h4>{% trans %}form.label.options{% endtrans %}:</h4>
+                    <table class="table" style="width: 50%">
+                        {% for productOption in product.productOptions %}
+                            <tr>
+                                <th>{{ productOption.option.name }}</th>
+                                <td>{{ productOption.value }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="col-md-2">
+
+                    {{ render_esi(controller('product_controller:addProductFormAction', {'id': product.id})) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

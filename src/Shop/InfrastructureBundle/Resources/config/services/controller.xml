@@ -12,5 +12,12 @@
             <argument id="router" type="service"/>
             <argument id="templating.engine.twig" type="service"/>
         </service>
+
+        <service class="Shop\Presentation\Controller\ProductController" id="product_controller">
+            <argument id="templating.engine.twig" type="service" />
+            <argument id="query_bus" type="service" />
+            <argument id="form.factory" type="service" />
+            <argument id="router" type="service" />
+        </service>
     </services>
 </container>

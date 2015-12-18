@@ -1,0 +1,32 @@
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
+{{ form_start(form) }}
+<div class="form-group">
+    <label class="col-sm-4 control-label">{% trans %}form.label.available{% endtrans %}</label>
+    <div class="col-sm-8">
+        <p class="form-control-static input-sm">
+            {% if available %}
+                <span class="lead text-success">{% trans %}message.in_stock{% endtrans %}</span>
+            {% else %}
+                <span class="lead text-danger">{% trans %}message.out_of_stock{% endtrans %}</span>
+            {% endif %}
+        </p>
+    </div>
+</div>
+{% if available %}
+    <div class="form-group">
+        <label class="col-sm-4 control-label">{% trans %}form.label.quantity{% endtrans %}</label>
+        <div class="col-sm-8">
+            {{ form_widget(form.quantity) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-8">
+            {{ form_widget(form.submit) }}
+        </div>
+    </div>
+{% else %}
+    {% do form.quantity.setRendered %}
+    {% do form.submit.setRendered %}
+{% endif %}
+{{ form_end(form) }}
