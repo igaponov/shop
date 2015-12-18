@@ -103,6 +103,12 @@
                  factory-method="getRepository">
             <argument type="string">\Shop\Domain\Product\Product</argument>
         </service>
+
+        <service id="order_view_repository" alias="dbal_order_view_repository"/>
+        <service id="dbal_order_view_repository"
+                 class="Shop\InfrastructureBundle\Repository\DBAL\OrderViewRepository">
+            <argument type="service" id="doctrine.dbal.default_connection"/>
+        </service>
     </services>
 
 </container>
