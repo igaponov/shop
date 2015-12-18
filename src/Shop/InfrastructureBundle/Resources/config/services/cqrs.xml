@@ -83,6 +83,16 @@
             <tag name="query_handler" handles="Shop\Application\Query\GetProductAvailabilityByIdQuery" method="getProductAvailabilityById"/>
             <tag name="query_handler" handles="Shop\Application\Query\GetProductByIdQuery" method="getProductById"/>
         </service>
+
+        <service class="Shop\Application\Service\CartService" id="shop.cart_service">
+            <argument type="service" id="cart_repository"/>
+            <argument type="service" id="cart_view_repository"/>
+            <argument type="service" id="product_repository"/>
+            <argument type="service" id="product_view_repository"/>
+            <tag name="command_handler" handles="Shop\Application\Command\AddProductCommand" method="addProduct"/>
+            <tag name="command_handler" handles="Shop\Application\Command\RemoveProductCommand" method="removeProduct"/>
+            <tag name="query_handler" handles="Shop\Application\Query\GetCartQuery" method="getCart"/>
+        </service>
         <!-- -->
 
         <!-- Events -->
