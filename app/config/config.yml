@@ -127,3 +127,9 @@ event_bus:
 command_bus:
     logging:
         enabled: %kernel.debug%
+
+stof_doctrine_extensions:
+    default_locale: %locale%
+    orm:
+        default:
+            timestampable: true
