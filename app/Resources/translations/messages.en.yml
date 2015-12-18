@@ -1,0 +1,83 @@
+message:
+    email_subject: 'Your order has been paid successfully'
+    details: 'See details'
+    cart_empty: 'The cart is empty'
+    resume_shopping: 'Resume shopping'
+    no_orders: 'You don''t have any orders yet'
+    in_stock: 'In stock'
+    out_of_stock: 'Out of Stock'
+action:
+    submit: Save
+    pay: Pay
+    add_product: Add to Cart
+    login: Login
+    logout: Logout
+    register: Register
+    update: Update
+    search: Search
+    add: Add
+meta:
+    title:
+        address: Shipping address
+        cart: Cart
+        orders: Orders
+        order: Order
+        profile: Profile
+        user: User
+        products: Products
+        categories: Categories
+        admin: Admin
+    description: ~
+    status:
+        captured: Captured
+        authorized: Authorized
+        refunded: Refunded
+        unknown: Unknown
+        failed: Failed
+        suspended: Suspended
+        expired: Expired
+        pending: Pending
+        canceled: Canceled
+        new: New
+form:
+    label:
+        country: Country
+        city: City
+        street: Street
+        zip_code: Zip Code
+        address: Address
+        gateway_name: Payment method
+        username: Username
+        password: Password
+        password_repeat: Repeat Password
+        name: Name
+        price: Price
+        quantity: Quantity
+        sum: Sum
+        total: Total
+        category: Category
+        options: Options
+        available: Available
+        updated: Updated at
+        image: Image
+        description: Description
+        price_from: Price from
+        price_to: Price to
+        query: Query
+    choice:
+        offline: Cash
+        paypal: PayPal
+    placeholder:
+        all: All
+warn:
+    need_login: Log in before ordering
+word:
+    summary: %from%-%to% of %of% results
+    for: for
+    in: in
+flash:
+    payment:
+        success: 'The action has been successfully completed, status: %status%, amount: %amount%'
+        danger: 'Error has occurred. Status of payment: %status%'
+        warning: 'Warning. Status of payment: %status%'
+        info: 'Info. Status of payment: %status%'

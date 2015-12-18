@@ -1,0 +1,82 @@
+message:
+    email_subject: 'Ваш заказ успешно оплачен'
+    details: 'Подробнее'
+    cart_empty: 'Корзина пуста'
+    resume_shopping: 'Продолжить выбирать'
+    no_orders: 'У вас еще нет заказов'
+    in_stock: На складе
+    out_of_stock: Отсутствует
+action:
+    submit: Сохранить
+    pay: Оплатить
+    add_product: Добавить
+    login: Вход
+    logout: Выход
+    register: Регистрация
+    update: Обновить
+    search: Искать
+    add: Добавить
+meta:
+    title:
+        cart: Корзина
+        orders: Заказы
+        order: Заказ
+        profile: Профиль
+        user: Пользователь
+        products: Товары
+        categories: Категории
+        admin: Администратор
+    description: ~
+    status:
+        captured: Оплачен
+        authorized: Авторизован
+        refunded: Возвращен
+        unknown: Неизвестен
+        failed: Ошибка
+        suspended: Приостановлен
+        expired: Истек
+        pending: 'В ожидании'
+        canceled: Отменен
+        new: Новый
+form:
+    label:
+        country: Страна
+        city: Город
+        street: Улица
+        zip_code: Индекс
+        address: 'Адрес'
+        gateway_name: Способ оплаты
+        username: 'Имя пользователя'
+        password: Пароль
+        password_repeat: 'Повторить пароль'
+        name: Название
+        price: Цена
+        quantity: Кол-во
+        sum: Сумма
+        total: Итог
+        category: Категория
+        options: Опции
+        available: Наличие
+        updated: Обновлено
+        image: Изображение
+        description: Описание
+        price_from: Цена от
+        price_to: Цена до
+        query: Текст
+    choice:
+        offline: Наличными курьеру
+        paypal: PayPal
+    placeholder:
+        all: Все
+warn:
+    need_login: Чтобы продолжить, войдите в систему
+word:
+    summary: '%from%-%to% из %of% результатов'
+    for: для
+    in: в
+flash:
+    payment:
+        success: 'Оплата завершена успешно, статус: %status%, сумма: %amount%'
+        danger: 'Произошла ошибка. Статус оплаты: %status%'
+        warning: 'Внимание. Статус оплаты: %status%'
+        info: 'Информация. Статус оплаты: %status%'
