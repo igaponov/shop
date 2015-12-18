@@ -8,4 +8,12 @@
         <import resource="services/cqrs.xml" />
     </imports>
 
+    <services>
+        <service class="Shop\Application\Factory\PaymentTokenFactory" id="shop.payment_token_factory">
+            <argument id="payum.static_registry" type="service"/>
+            <argument id="payum.security.token_factory" type="service"/>
+            <argument type="string">%currency%</argument>
+        </service>
+    </services>
+
 </container>

@@ -104,6 +104,13 @@
             <tag name="query_handler" handles="Shop\Application\Query\GetCustomerOrdersQuery" method="getCustomerOrders"/>
             <tag name="query_handler" handles="Shop\Application\Query\GetOrderByIdQuery" method="getOrderById"/>
         </service>
+
+        <service class="Shop\Application\Service\PaymentService" id="shop.application.service.payment_service">
+            <argument id="payum.static_registry" type="service"/>
+            <argument id="payum.security.http_request_verifier" type="service"/>
+            <argument id="event_bus" type="service"/>
+            <tag name="command_handler" handles="Shop\Application\Command\VerifyRequestCommand" method="verifyRequest"/>
+        </service>
         <!-- -->
 
         <!-- Events -->
@@ -126,6 +133,22 @@
             <argument type="service" id="shop.payment_token_factory"/>
             <argument type="service" id="event_dispatcher"/>
             <tag name="event_subscriber" subscribes_to="Shop\Application\Event\OrderCreatedEvent"/>
+        </service>
+
+        <service class="Shop\Application\Subscriber\PaymentFlashMessageSubscriber" id="shop.payment_flash_message_subscriber">
+            <argument id="session" type="service"/>
+            <argument id="cart_repository" type="service"/>
+            <argument id="translator" type="service"/>
+            <tag name="event_subscriber" subscribes_to="Shop\Application\Event\RequestVerifiedEvent"/>
+        </service>
+        <service class="Shop\Application\Subscriber\PaymentEmailMessageSubscriber" id="shop.application.subscriber.payment_email_message_subscriber">
+            <argument id="order_view_repository" type="service"/>
+            <argument id="mailer" type="service"/>
+            <argument id="translator" type="service"/>
+            <argument id="templating.engine.twig" type="service"/>
+        </service>
+        <service class="Shop\Application\Subscriber\MarkOrderAsPaidSubscriber" id="shop.mark_order_as_paid_subscriber">
+            <argument id="order_repository" type="service"/>
         </service>
         <!-- -->
     </services>
