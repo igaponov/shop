@@ -36,5 +36,16 @@
         <service id="faker.generator" factory-class="Faker\Factory" class="Faker\Generator" factory-method="create">
             <argument type="string">%locale%</argument>
         </service>
+
+        <service class="Shop\Presentation\Twig\PriceExtension" id="shop.price_extension" public="false">
+            <argument type="string">%locale%</argument>
+            <argument type="string">%currency%</argument>
+            <tag name="twig.extension"/>
+        </service>
+
+        <service class="Shop\Presentation\Twig\LocaleExtension" id="shop.country_extension">
+            <argument type="string">%locales%</argument>
+            <tag name="twig.extension"/>
+        </service>
     </services>
 </container>
