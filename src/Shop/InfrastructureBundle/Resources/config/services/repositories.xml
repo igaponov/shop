@@ -57,6 +57,15 @@
             <argument type="service" id="snc_redis.default"/>
             <argument type="service" id="dbal_option_view_repository"/>
         </service>
+
+        <service id="category_repository" alias="orm_category_repository"/>
+        <service id="orm_category_repository"
+                 public="false"
+                 class="Shop\InfrastructureBundle\Repository\ORM\CategoryRepository"
+                 factory-service="doctrine.orm.default_entity_manager"
+                 factory-method="getRepository">
+            <argument type="string">\Shop\Domain\Category\Category</argument>
+        </service>
     </services>
 
 </container>
