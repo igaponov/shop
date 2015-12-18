@@ -1,6 +1,15 @@
 security:
 
+    encoders:
+        Shop\InfrastructureBundle\Security\User:
+            algorithm: bcrypt
+            cost: 12
+
     providers:
+        user_db:
+            entity:
+                class: Shop\InfrastructureBundle\Security\User
+                property: username
 
     firewalls:
         dev:
