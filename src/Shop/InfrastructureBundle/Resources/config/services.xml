@@ -23,5 +23,10 @@
             <argument id="fos_elastica.index.search.product" type="service"/>
             <argument id="product_transformer" type="service"/>
         </service>
+
+        <service class="Shop\InfrastructureBundle\Validator\IsAvailableValidator" id="shop.is_available_validator">
+            <argument id="product_view_repository" type="service"/>
+            <tag name="validator.constraint_validator" alias="is_available_validator"/>
+        </service>
     </services>
 </container>
