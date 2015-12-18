@@ -27,5 +27,11 @@
             <argument id="form.factory" type="service" />
             <argument id="router" type="service" />
         </service>
+
+        <service class="Shop\Presentation\Controller\OrderController" id="order_controller">
+            <argument id="query_bus" type="service"/>
+            <argument id="templating.engine.twig" type="service"/>
+            <argument id="security.authorization_checker" type="service"/>
+        </service>
     </services>
 </container>

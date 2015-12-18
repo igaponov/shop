@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="well">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h3>{% trans %}meta.title.order{% endtrans %} #{{ order.number }}</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                {{ include(':order:address.html.twig', {order: order}) }}
+            </div>
+            <div class="col-md-9">
+                {{ include(':order:items.html.twig', {order: order}) }}
+            </div>
+        </div>
+    </div>
+</div>

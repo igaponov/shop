@@ -40,3 +40,7 @@ remove_product:
     path:     /cart/product/{id}
     methods:  [ DELETE ]
     defaults: { _controller: cart_controller:removeProductAction }
+
+order:
+    path:     /orders/{id}
+    defaults: { _controller: order_controller:viewAction }

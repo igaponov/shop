@@ -1,0 +1,5 @@
+{% extends '::content.html.twig' %}
+
+{% block body %}
+    {{ render_esi(controller('order_controller:orderAction', {id: id})) }}
+{% endblock %}

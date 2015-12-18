@@ -1,0 +1,34 @@
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>{% trans %}form.label.name{% endtrans %}</th>
+        <th>{% trans %}form.label.price{% endtrans %}</th>
+        <th>{% trans %}form.label.quantity{% endtrans %}</th>
+        <th>{% trans %}form.label.sum{% endtrans %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for lineItem in order.lineItems %}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>
+                <a href="{{ path('product', {id: lineItem.id}) }}">
+                    {{ lineItem.name }}
+                </a>
+            </td>
+            <td>{{ lineItem.price | price }}</td>
+            <td>{{ lineItem.quantity }}</td>
+            <td>{{ lineItem.total | price }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+        <td></td>
+        <th>{% trans %}form.label.total{% endtrans %}</th>
+        <td colspan="2"></td>
+        <td>{{ order.total | price }}</td>
+    </tr>
+    </tfoot>
+</table>
