@@ -34,6 +34,11 @@
         <service class="Shop\Presentation\Form\ProfileType" id="shop.form.type.profile">
             <tag name="form.type"/>
         </service>
+
+        <service class="Shop\Presentation\Form\ProductFilterType" id="shop.form.type.product_filter_type">
+            <argument type="service" id="category_view_repository"/>
+            <tag name="form.type"/>
+        </service>
     </services>
 
 </container>
