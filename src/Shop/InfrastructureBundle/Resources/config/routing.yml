@@ -25,3 +25,18 @@ products:
     path:     /products
     methods:  [ GET ]
     defaults: { _controller: product_controller:indexAction }
+
+cart:
+    path:     /cart
+    methods:  [ GET, POST ]
+    defaults: { _controller: cart_controller:indexAction }
+
+add_product:
+    path:     /cart/product
+    methods:  [ POST ]
+    defaults: { _controller: cart_controller:addProductAction }
+
+remove_product:
+    path:     /cart/product/{id}
+    methods:  [ DELETE ]
+    defaults: { _controller: cart_controller:removeProductAction }

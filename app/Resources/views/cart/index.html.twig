@@ -1,0 +1,9 @@
+{% extends '::content.html.twig' %}
+
+{% block body %}
+    {% if app.request.method == 'POST' %}
+        {{ render(controller('cart_controller:cartAction', {request: app.request})) }}
+    {% else %}
+        {{ render_esi(controller('cart_controller:cartAction')) }}
+    {% endif %}
+{% endblock %}
