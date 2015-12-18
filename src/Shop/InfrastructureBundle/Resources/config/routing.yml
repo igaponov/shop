@@ -52,3 +52,7 @@ nav:
 profile:
     path:     /profile
     defaults: { _controller: profile_controller:indexAction }
+
+payment_done:
+    path:     /payment/done
+    defaults: { _controller: payment_controller:doneAction }
