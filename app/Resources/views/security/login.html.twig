@@ -1,0 +1,24 @@
+{% extends '::content.html.twig' %}
+
+{% block body %}
+    <div class="form-signin">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        {{ form_start(form) }}
+        {{ form_row(form._username) }}
+        {{ form_row(form._password) }}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+                {{ form_widget(form.submit) }}
+            </div>
+            <div class="col-sm-4">
+                <p class="form-control-static">
+                    <a href="{{ path('user_registration') }}">{% trans %}title.register{% endtrans %}</a>
+                </p>
+
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

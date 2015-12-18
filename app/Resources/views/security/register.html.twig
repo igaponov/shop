@@ -1,0 +1,20 @@
+{% extends '::content.html.twig' %}
+
+{% block body %}
+    <div class="form-signin">
+        {{ form_start(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.password) }}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+                {{ form_widget(form.submit) }}
+            </div>
+            <div class="col-sm-4">
+                <p class="form-control-static">
+                    <a href="{{ path('login_route') }}">{% trans %}title.login{% endtrans %}</a>
+                </p>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock body %}

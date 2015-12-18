@@ -8,6 +8,7 @@
         <import resource="services/cqrs.xml" />
         <import resource="services/repositories.xml" />
         <import resource="services/form.xml" />
+        <import resource="services/controller.xml" />
     </imports>
 
     <services>

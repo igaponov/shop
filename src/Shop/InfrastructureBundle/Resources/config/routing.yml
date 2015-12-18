@@ -1,0 +1,7 @@
+login_route:
+    path:     /login
+    defaults: { _controller: security_controller:loginAction }
+
+user_registration:
+    path:     /register
+    defaults: { _controller: security_controller:registerAction }
