@@ -13,6 +13,10 @@
             <argument type="service" id="product_repository"/>
             <tag name="form.type"/>
         </service>
+
+        <service class="Shop\Presentation\Form\AddressType" id="shop.form.type.address">
+            <tag name="form.type"/>
+        </service>
     </services>
 
 </container>
