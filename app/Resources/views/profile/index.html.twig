@@ -1,0 +1,5 @@
+{% extends '::content.html.twig' %}
+
+{% block body %}
+    {{ render_esi(controller('profile_controller:profileAction')) }}
+{% endblock %}

@@ -1,0 +1,32 @@
+<h2>{% trans %}meta.title.orders{% endtrans %}:</h2>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    {% for order in orders %}
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading{{ loop.index }}">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion"
+                       href="#collapse{{ loop.index }}"
+                       aria-expanded="true" aria-controls="collapse{{ loop.index }}">
+                        {% trans %}meta.title.order{% endtrans %} #{{ order.number }}
+                        <span class="caret"></span>
+                        <a href="{{ path('order', {id: order.id}) }}" class="text-primary pull-right">
+                            {% trans %}message.details{% endtrans %}
+                        </a>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse{{ loop.index }}" class="panel-collapse collapse {% if loop.first %}in{% endif %}" role="tabpanel"
+                 aria-labelledby="heading{{ loop.index }}">
+                <div class="panel-body">
+                    <p>
+                        <label>{% trans %}form.label.address{% endtrans %}:</label>
+                        {{ order.country|country }}, {{ order.city }}, {{ order.street }}, {{ order.zipCode }}
+                    </p>
+                    {{ include(':order:items.html.twig', {order: order}) }}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>{% trans %}message.no_orders{% endtrans %}</p>
+    {% endfor %}
+</div>

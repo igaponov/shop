@@ -1,0 +1,66 @@
+{% spaceless %}
+    <ul class="nav navbar-nav navbar-right" id="profile_nav">
+        {% if app.user %}
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="{{ path('profile') }}">
+                            <span class="glyphicon glyphicon-user"></span>
+                            {% trans %}meta.title.profile{% endtrans %}
+                        </a>
+                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('admin') }}">
+                                <span class="glyphicon glyphicon-lock"></span>
+                                {% trans %}meta.title.admin{% endtrans %}
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li>
+                        <a href="{{ path('logout') }}">
+                            <span class="glyphicon glyphicon-log-out"></span>
+                            {% trans %}action.logout{% endtrans %}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ path('login_route') }}">
+                    <span class="glyphicon glyphicon-log-in"></span>
+                    &nbsp;{% trans %}action.login{% endtrans %}
+                </a>
+            </li>
+        {% endif %}
+
+        <li>
+            <a id="cart_link" href="{{ path('cart') }}" data-url="{{ path('nav') }}">
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+                <sub class="text-success">{{ cart.count }}</sub>
+            </a>
+        </li>
+
+    </ul>
+    {% if app.request.hasPreviousSession %}
+        {% if app.session.flashbag.peekAll|length > 0 %}
+            <div class="" style="z-index: 10000; position: absolute; top: 80px; right: 15px">
+                {% for index, messages in app.session.flashbag.all %}
+                {% for message in messages %}
+                <div class="alert alert-{{ index }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                    {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endspaceless %}

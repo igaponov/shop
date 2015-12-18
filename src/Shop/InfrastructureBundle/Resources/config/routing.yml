@@ -44,3 +44,11 @@ remove_product:
 order:
     path:     /orders/{id}
     defaults: { _controller: order_controller:viewAction }
+
+nav:
+    path:     /profile/nav
+    defaults: { _controller: profile_controller:navAction }
+
+profile:
+    path:     /profile
+    defaults: { _controller: profile_controller:indexAction }
