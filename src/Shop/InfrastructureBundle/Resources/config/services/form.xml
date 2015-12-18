@@ -39,6 +39,12 @@
             <argument type="service" id="category_view_repository"/>
             <tag name="form.type"/>
         </service>
+
+        <service class="Shop\Presentation\Form\AdminProductFilterType" id="shop.form.type.admin_product_filter_type">
+            <argument type="service" id="category_view_repository"/>
+            <argument type="string">%currency%</argument>
+            <tag name="form.type"/>
+        </service>
     </services>
 
 </container>
