@@ -70,6 +70,19 @@
             <tag name="command_handler" handles="Shop\Application\Command\UpdateProfileCommand" method="updateProfile"/>
             <tag name="query_handler" handles="Shop\Application\Query\GetActualCustomerQuery" method="getActualCustomer"/>
         </service>
+
+        <service class="Shop\Application\Service\ProductService" id="shop.product_service">
+            <argument type="service" id="product_repository"/>
+            <argument type="service" id="product_view_repository"/>
+            <argument type="service" id="category_repository"/>
+            <argument type="service" id="option_repository"/>
+            <argument type="service" id="event_bus"/>
+            <tag name="command_handler" handles="Shop\Application\Command\CreateProductCommand" method="createProduct"/>
+            <tag name="command_handler" handles="Shop\Application\Command\UpdateProductCommand" method="updateProduct"/>
+            <tag name="query_handler" handles="Shop\Application\Query\GetFilteredProductsQuery" method="getFilteredProducts"/>
+            <tag name="query_handler" handles="Shop\Application\Query\GetProductAvailabilityByIdQuery" method="getProductAvailabilityById"/>
+            <tag name="query_handler" handles="Shop\Application\Query\GetProductByIdQuery" method="getProductById"/>
+        </service>
         <!-- -->
 
         <!-- Events -->
@@ -80,6 +93,12 @@
         <service class="Shop\Application\Subscriber\SuccessfulRegistrationSubscriber" id="shop.successful_registration_subscriber">
             <argument id="security.token_storage" type="service"/>
             <tag name="event_subscriber" subscribes_to="Shop\Application\Event\UserRegisteredEvent"/>
+        </service>
+
+        <service class="Shop\Application\Subscriber\ProductViewUpdateSubscriber" id="shop.application.subscriber.elastica_populate_subscriber">
+            <argument id="fos_elastica.object_persister.search.product" type="service"/>
+            <argument id="product_view_repository" type="service"/>
+            <tag name="event_subscriber" subscribes_to="Shop\Application\Event\ProductSavedEvent" method="onProductSave"/>
         </service>
         <!-- -->
     </services>
