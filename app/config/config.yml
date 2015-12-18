@@ -32,6 +32,11 @@ framework:
         handler_id:    snc_redis.session.handler
     fragments:         ~
     http_method_override: true
+    assets:
+        base_path: ~
+        packages:
+            app:
+                base_path: /bundles/shopinfrastructure/
 
 # Twig Configuration
 twig:

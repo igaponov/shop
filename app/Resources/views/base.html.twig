@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shop {% block title %}{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link href="{{ asset('css/bootstrap.css', 'app') }}" rel="stylesheet"/>
+        <link href="{{ asset('css/bootstrap-theme.css', 'app') }}" rel="stylesheet"/>
+    {% endblock %}
+</head>
+<body>
+
+{% block nav %}
+{% endblock %}
+
+<div class="container-fluid" role="main">
+    {% block content %}{% endblock %}
+</div>
+
+<footer class="footer navbar-fixed-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-muted">Place sticky footer content here.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.js', 'app') }}"></script>
+    <script src="{{ asset('js/bootstrap.js', 'app') }}"></script>
+    <script src="{{ asset('js/main.js', 'app') }}"></script>
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 70px;
+    margin-bottom: 60px;
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+    border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+    /*padding: 20px;*/
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+/*
+ * Main content
+ */
+
+.main {
+    padding: 20px;
+}
+
+@media (min-width: 768px) {
+    .main {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}
+
+.main .page-header {
+    margin-top: 0;
+}
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.placeholders h4 {
+    margin-bottom: 0;
+}
+
+.placeholder {
+    margin-bottom: 20px;
+}
+
+.placeholder img {
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.form-signin {
+    max-width: 500px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.navbar .nav > li > a {
+    font-size: 18px;
+    line-height: 20px;
+    text-transform: capitalize;
+}
+
+.cart-empty {
+    max-width: 300px;
+    margin: 200px auto;
+}
+
+.cart-empty span {
+    font-size: 70px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+.footer > .container {
+    padding: 15px;
+}
+
+.popover-warning {
+    border-color: #faebcc;
+}
+
+.popover-danger {
+    border-color: #ebccd1;
+}
+
+.popover-danger > .popover-title {
+    color: #f5f5f5;
+    background-color: #d9534f;
+    border-color: #d9534f;
+}
+
+.popover-success {
+    border-color: #d6e9c6;
+}
+.popover-success > .popover-title {
+    color: #f5f5f5;
+    background-color: #93c54b;
+    border-color: #93c54b;
+}
