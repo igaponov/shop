@@ -26,6 +26,10 @@
         <service class="Shop\Presentation\Form\OrderType" id="shop.form.type.order_type">
             <tag name="form.type"/>
         </service>
+
+        <service class="Shop\Presentation\Form\UserType" id="shop.form.type.user">
+            <tag name="form.type"/>
+        </service>
     </services>
 
 </container>
