@@ -125,6 +125,13 @@
             <argument type="service" id="session"/>
             <argument type="service" id="product_view_repository"/>
         </service>
+
+        <service id="cart_repository" alias="session_cart_repository"/>
+        <service id="session_cart_repository"
+                 class="Shop\InfrastructureBundle\Repository\Session\CartRepository">
+            <argument type="service" id="session"/>
+            <argument type="service" id="product_repository"/>
+        </service>
     </services>
 
 </container>
