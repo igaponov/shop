@@ -6,6 +6,7 @@
 
     <imports>
         <import resource="services/cqrs.xml" />
+        <import resource="services/repositories.xml" />
     </imports>
 
     <services>
