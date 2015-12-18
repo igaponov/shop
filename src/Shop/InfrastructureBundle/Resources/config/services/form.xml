@@ -8,6 +8,11 @@
         <service class="Shop\Presentation\Form\LoginType" id="shop.form.type.login">
             <tag name="form.type"/>
         </service>
+
+        <service class="Shop\Presentation\Form\AddProductType" id="shop.form.type.add_product">
+            <argument type="service" id="product_repository"/>
+            <tag name="form.type"/>
+        </service>
     </services>
 
 </container>
