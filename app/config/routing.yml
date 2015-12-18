@@ -19,3 +19,10 @@ payum_authorize:
 
 payum_notify:
     resource: "@PayumBundle/Resources/config/routing/notify.xml"
+
+shop:
+    resource: "@ShopInfrastructureBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+    defaults: { _locale: en }
+    requirements:
+        _locale: %locales%
