@@ -14,6 +14,13 @@
             <argument id="payum.security.token_factory" type="service"/>
             <argument type="string">%currency%</argument>
         </service>
-    </services>
 
+        <service class="Shop\InfrastructureBundle\Transformer\ProductElasticaToModelTransformer" id="product_transformer">
+            <argument id="category_view_repository" type="service"/>
+        </service>
+        <service class="Shop\InfrastructureBundle\Finder\TransformedFinder" id="shop.finder.transformed_finder">
+            <argument id="fos_elastica.index.search.product" type="service"/>
+            <argument id="product_transformer" type="service"/>
+        </service>
+    </services>
 </container>

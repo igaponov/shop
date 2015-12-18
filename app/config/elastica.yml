@@ -1,0 +1,101 @@
+fos_elastica:
+    clients:
+        default:
+            host: 127.0.0.1
+            port: 9200
+            logger: %kernel.debug%
+    indexes:
+        search:
+            settings:
+                index:
+                    analysis:
+                        analyzer:
+                            ngram_analyzer:
+                                type: custom
+                                tokenizer: whitespace
+                                filter: [lowercase, ngram_filter]
+                            whitespace_analyzer:
+                                type: custom
+                                tokenizer: whitespace
+                                filter: [lowercase]
+                        filter:
+                            ngram_filter:
+                                type: "nGram"
+                                min_gram: 2
+                                max_gram: 20
+            types:
+                product:
+                    _all:
+                        index_analyzer: ngram_analyzer
+                        search_analyzer: whitespace_analyzer
+                    mappings:
+                        id:
+                            type: string
+                            index: not_analyzed
+                            include_in_all: false
+                            property_path: id.value
+                        name:
+                            type: string
+                            boost: 5
+                            index: not_analyzed
+                        price:
+                            type: integer
+                            index: not_analyzed
+                            include_in_all: false
+                            property_path: price.amount
+                        description:
+                            type: string
+                            index: not_analyzed
+                        category:
+                            type: "object"
+                            properties:
+                                id:
+                                    type: string
+                                    index: not_analyzed
+                                    include_in_all: false
+                                name:
+                                    type: string
+                                    boost: 3
+                                    index: not_analyzed
+                        availability:
+                            type: boolean
+                            index: not_analyzed
+                            include_in_all: false
+                            property_path: available
+                        imageUrl:
+                            type: string
+                            index: no
+                            include_in_all: false
+                        updated:
+                            type: date
+                            index: not_analyzed
+                            include_in_all: false
+                        productOptions:
+                            type: "object"
+                            properties:
+                                option:
+                                    type: "object"
+                                    properties:
+                                        id:
+                                            type: string
+                                            index: not_analyzed
+                                        name:
+                                            type: string
+                                            index: not_analyzed
+                                value:
+                                    type: string
+                                    index: not_analyzed
+                    persistence:
+                        driver: orm
+                        model: Shop\Domain\Product\Product
+                        identifier: id.value
+                        provider: ~
+                        listener:
+                            insert: false
+                            update: false
+                            delete: false
+                            flush: false
+                        finder:
+                            service: shop.finder.transformed_finder
+                        elastica_to_model_transformer:
+                            service: product_transformer
