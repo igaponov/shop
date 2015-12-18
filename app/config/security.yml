@@ -17,6 +17,7 @@ security:
             security: false
 
         main:
+            pattern: /(_fragment|login_check|logout|admin|cart|profile|payment)
             anonymous: ~
             form_login:
                 login_path: /en/login
