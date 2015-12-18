@@ -49,5 +49,21 @@
             <argument type="string">%locales%</argument>
             <tag name="twig.extension"/>
         </service>
+
+        <service class="Shop\InfrastructureBundle\UrlCollector\UrlCollector" id="shop.url_collector">
+            <argument type="collection">
+                <argument type="service" id="shop.index_url_collector"/>
+                <argument type="service" id="shop.product_url_collector"/>
+            </argument>
+        </service>
+        <service class="Shop\InfrastructureBundle\UrlCollector\IndexUrlCollector" id="shop.index_url_collector" public="false">
+            <argument id="router" type="service"/>
+            <argument type="string">%locales%</argument>
+        </service>
+        <service class="Shop\InfrastructureBundle\UrlCollector\ProductUrlCollector" id="shop.product_url_collector" public="false">
+            <argument id="router" type="service"/>
+            <argument id="product_view_repository" type="service"/>
+            <argument type="string">%locales%</argument>
+        </service>
     </services>
 </container>
