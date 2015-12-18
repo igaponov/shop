@@ -93,6 +93,17 @@
             <tag name="command_handler" handles="Shop\Application\Command\RemoveProductCommand" method="removeProduct"/>
             <tag name="query_handler" handles="Shop\Application\Query\GetCartQuery" method="getCart"/>
         </service>
+
+        <service class="Shop\Application\Service\OrderService" id="shop.order_service">
+            <argument id="security.token_storage" type="service"/>
+            <argument id="order_repository" type="service"/>
+            <argument id="order_view_repository" type="service"/>
+            <argument id="cart_repository" type="service"/>
+            <argument id="event_bus" type="service"/>
+            <tag name="command_handler" handles="Shop\Application\Command\CreateOrderCommand" method="createOrder"/>
+            <tag name="query_handler" handles="Shop\Application\Query\GetCustomerOrdersQuery" method="getCustomerOrders"/>
+            <tag name="query_handler" handles="Shop\Application\Query\GetOrderByIdQuery" method="getOrderById"/>
+        </service>
         <!-- -->
 
         <!-- Events -->
@@ -109,6 +120,12 @@
             <argument id="fos_elastica.object_persister.search.product" type="service"/>
             <argument id="product_view_repository" type="service"/>
             <tag name="event_subscriber" subscribes_to="Shop\Application\Event\ProductSavedEvent" method="onProductSave"/>
+        </service>
+
+        <service class="Shop\Application\Subscriber\CaptureOrderSubscriber" id="shop.capture_order_subscriber">
+            <argument type="service" id="shop.payment_token_factory"/>
+            <argument type="service" id="event_dispatcher"/>
+            <tag name="event_subscriber" subscribes_to="Shop\Application\Event\OrderCreatedEvent"/>
         </service>
         <!-- -->
     </services>
