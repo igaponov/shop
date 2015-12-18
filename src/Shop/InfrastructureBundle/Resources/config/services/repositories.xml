@@ -118,6 +118,13 @@
                  factory-method="getRepository">
             <argument type="string">\Shop\Domain\Order\Order</argument>
         </service>
+
+        <service id="cart_view_repository" alias="session_cart_view_repository"/>
+        <service id="session_cart_view_repository"
+                 class="Shop\InfrastructureBundle\Repository\Session\CartViewRepository">
+            <argument type="service" id="session"/>
+            <argument type="service" id="product_view_repository"/>
+        </service>
     </services>
 
 </container>
