@@ -75,6 +75,25 @@
                  factory-method="getRepository">
             <argument type="string">\Shop\Domain\Option\Option</argument>
         </service>
+
+        <service id="product_view_repository" alias="shop.predis_product_view_repository" />
+        <service id="shop.elastica_product_view_repository"
+                 class="Shop\InfrastructureBundle\Repository\Elastica\ProductViewRepository"
+                 public="false"
+                 factory-service="fos_elastica.manager.orm"
+                 factory-method="getRepository">
+            <argument type="string">Shop\Domain\Product\Product</argument>
+            <call method="setType">
+                <argument id="fos_elastica.index.search.product" type="service"/>
+            </call>
+            <call method="setModelTransformer">
+                <argument id="product_transformer" type="service"/>
+            </call>
+        </service>
+        <service class="Shop\InfrastructureBundle\Repository\Predis\ProductViewRepository" id="shop.predis_product_view_repository">
+            <argument id="snc_redis.default" type="service"/>
+            <argument id="shop.elastica_product_view_repository" type="service"/>
+        </service>
     </services>
 
 </container>
