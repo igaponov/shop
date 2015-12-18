@@ -66,6 +66,15 @@
                  factory-method="getRepository">
             <argument type="string">\Shop\Domain\Category\Category</argument>
         </service>
+
+        <service id="option_repository" alias="orm_option_repository"/>
+        <service id="orm_option_repository"
+                 public="false"
+                 class="Shop\InfrastructureBundle\Repository\ORM\OptionRepository"
+                 factory-service="doctrine.orm.default_entity_manager"
+                 factory-method="getRepository">
+            <argument type="string">\Shop\Domain\Option\Option</argument>
+        </service>
     </services>
 
 </container>
