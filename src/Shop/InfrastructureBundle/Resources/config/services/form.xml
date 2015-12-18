@@ -50,6 +50,12 @@
             <argument id="option_view_repository" type="service"/>
             <tag name="form.type"/>
         </service>
+
+        <service class="Shop\Presentation\Form\ProductType" id="shop.form.product_type">
+            <argument id="category_view_repository" type="service"/>
+            <argument type="string">%currency%</argument>
+            <tag name="form.type"/>
+        </service>
     </services>
 
 </container>
