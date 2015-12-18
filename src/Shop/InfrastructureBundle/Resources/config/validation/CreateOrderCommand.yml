@@ -1,0 +1,4 @@
+Shop\Application\Command\CreateOrderCommand:
+    properties:
+        gatewayName:
+            - NotBlank: ~

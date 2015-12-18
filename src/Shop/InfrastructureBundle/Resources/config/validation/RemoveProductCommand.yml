@@ -1,0 +1,4 @@
+Shop\Application\Command\RemoveProductCommand:
+    properties:
+        id:
+            - NotBlank: ~

@@ -1,0 +1,9 @@
+Shop\Application\Command\RegisterUserCommand:
+    properties:
+        username:
+            - NotBlank: ~
+            - Email: ~
+        password:
+            - NotBlank: ~
+            - Length:
+                max: 4096

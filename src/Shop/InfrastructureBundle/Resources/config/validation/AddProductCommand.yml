@@ -1,0 +1,9 @@
+Shop\Application\Command\AddProductCommand:
+    properties:
+        productId:
+            - NotBlank: ~
+            - Shop\InfrastructureBundle\Validator\IsAvailable: ~
+        quantity:
+            - NotBlank: ~
+            - GreaterThan:
+                value: 0

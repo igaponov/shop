@@ -1,0 +1,10 @@
+Shop\Application\Model\Address:
+    properties:
+        country:
+            - NotBlank: ~
+        city:
+            - NotBlank: ~
+        street:
+            - NotBlank: ~
+        zipCode:
+            - NotBlank: ~
