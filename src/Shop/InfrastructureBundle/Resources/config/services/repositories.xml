@@ -109,6 +109,15 @@
                  class="Shop\InfrastructureBundle\Repository\DBAL\OrderViewRepository">
             <argument type="service" id="doctrine.dbal.default_connection"/>
         </service>
+
+        <service id="order_repository" alias="orm_order_repository"/>
+        <service id="orm_order_repository"
+                 public="false"
+                 class="Shop\InfrastructureBundle\Repository\ORM\OrderRepository"
+                 factory-service="doctrine.orm.default_entity_manager"
+                 factory-method="getRepository">
+            <argument type="string">\Shop\Domain\Order\Order</argument>
+        </service>
     </services>
 
 </container>
