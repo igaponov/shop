@@ -32,5 +32,9 @@
         <service class="Shop\InfrastructureBundle\Security\OrderVoter" id="shop.order_voter">
             <tag name="security.voter"/>
         </service>
+
+        <service id="faker.generator" factory-class="Faker\Factory" class="Faker\Generator" factory-method="create">
+            <argument type="string">%locale%</argument>
+        </service>
     </services>
 </container>
