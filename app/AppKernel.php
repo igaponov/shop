@@ -23,7 +23,8 @@ class AppKernel extends Kernel
             new FOS\HttpCacheBundle\FOSHttpCacheBundle(),
             new Snc\RedisBundle\SncRedisBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
-            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle()
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
