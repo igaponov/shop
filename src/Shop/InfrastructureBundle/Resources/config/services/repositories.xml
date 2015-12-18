@@ -94,6 +94,15 @@
             <argument id="snc_redis.default" type="service"/>
             <argument id="shop.elastica_product_view_repository" type="service"/>
         </service>
+
+        <service id="product_repository" alias="orm_product_repository"/>
+        <service id="orm_product_repository"
+                 public="false"
+                 class="Shop\InfrastructureBundle\Repository\ORM\ProductRepository"
+                 factory-service="doctrine.orm.default_entity_manager"
+                 factory-method="getRepository">
+            <argument type="string">\Shop\Domain\Product\Product</argument>
+        </service>
     </services>
 
 </container>
