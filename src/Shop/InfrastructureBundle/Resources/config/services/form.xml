@@ -17,6 +17,11 @@
         <service class="Shop\Presentation\Form\AddressType" id="shop.form.type.address">
             <tag name="form.type"/>
         </service>
+
+        <service class="Shop\InfrastructureBundle\Form\Type\GatewayType" id="shop.form.type.gateway">
+            <argument type="service" id="payum.static_registry"/>
+            <tag name="form.type"/>
+        </service>
     </services>
 
 </container>
