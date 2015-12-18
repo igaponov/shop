@@ -59,6 +59,28 @@
             <argument type="service" id="category_view_repository"/>
             <tag name="query_handler" handles="Shop\Application\Query\GetCategoryByIdQuery" method="getCategoryById"/>
         </service>
+
+        <service class="Shop\Application\Service\UserService" id="shop.user_service">
+            <argument id="shop.customer_repository" type="service"/>
+            <argument id="shop.customer_view_repository" type="service"/>
+            <argument id="security.token_storage" type="service"/>
+            <argument id="security.encoder_factory.generic" type="service"/>
+            <argument type="service" id="event_bus"/>
+            <tag name="command_handler" handles="Shop\Application\Command\RegisterUserCommand" method="registerUser"/>
+            <tag name="command_handler" handles="Shop\Application\Command\UpdateProfileCommand" method="updateProfile"/>
+            <tag name="query_handler" handles="Shop\Application\Query\GetActualCustomerQuery" method="getActualCustomer"/>
+        </service>
+        <!-- -->
+
+        <!-- Events -->
+        <service class="Shop\Application\Subscriber\CustomerViewUpdateSubscriber" id="shop.customer_view_update_subscriber">
+            <argument id="shop.customer_view_repository" type="service"/>
+            <tag name="event_subscriber" subscribes_to="Shop\Application\Event\ProfileUpdatedEvent"/>
+        </service>
+        <service class="Shop\Application\Subscriber\SuccessfulRegistrationSubscriber" id="shop.successful_registration_subscriber">
+            <argument id="security.token_storage" type="service"/>
+            <tag name="event_subscriber" subscribes_to="Shop\Application\Event\UserRegisteredEvent"/>
+        </service>
         <!-- -->
     </services>
     
