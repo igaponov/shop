@@ -53,6 +53,13 @@
             <tag name="query_bus_middleware" priority="1000"/>
         </service>
         <!-- -->
+
+        <!-- Handlers -->
+        <service class="Shop\Application\Service\CategoryService" id="shop.category_service">
+            <argument type="service" id="category_view_repository"/>
+            <tag name="query_handler" handles="Shop\Application\Query\GetCategoryByIdQuery" method="getCategoryById"/>
+        </service>
+        <!-- -->
     </services>
     
 </container>
