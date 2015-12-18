@@ -1,0 +1,6 @@
+Shop\Domain\ValueObject\Quantity:
+    type: embeddable
+    fields:
+        value:
+            type: integer
+            column: quantity

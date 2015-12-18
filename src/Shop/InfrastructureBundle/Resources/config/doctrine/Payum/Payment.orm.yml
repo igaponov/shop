@@ -1,0 +1,21 @@
+Shop\InfrastructureBundle\Model\Payment:
+    type: entity
+    table: payum_payments
+#    repositoryClass: Shop\InfrastructureBundle\Repository\ORM\ProductRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+#        number: ~
+#    fields:
+#        description: ~
+#        clientEmail: ~
+#        clientId: ~
+#        totalAmount:
+#            type: integer
+#        currencyCode: ~
+#        details:
+#            type: array
+#        creditCard:
+#            type: object

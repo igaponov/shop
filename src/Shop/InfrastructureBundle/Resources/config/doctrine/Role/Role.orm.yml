@@ -1,0 +1,4 @@
+Symfony\Component\Security\Core\Role\Role:
+    type: embeddable
+    fields:
+        role: ~

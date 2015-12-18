@@ -1,0 +1,36 @@
+Shop\Domain\Product\Product:
+    type: entity
+    table: products
+    repositoryClass: Shop\InfrastructureBundle\Repository\ORM\ProductRepository
+    fields:
+        name: ~
+        description:
+            type: text
+            nullable: true
+        imageUrl: ~
+        availability:
+            type: boolean
+        updated:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+    embedded:
+        id:
+            class: Shop\Domain\ValueObject\UuidIdentity
+            columnPrefix: false
+        price:
+            class: Shop\Domain\ValueObject\Money
+            columnPrefix: false
+    manyToOne:
+        category:
+            targetEntity: Shop\Domain\Category\Category
+            joinColumn:
+                name: category_id
+                nullable: false
+                onDelete: cascade
+    oneToMany:
+        productOptions:
+            targetEntity: Shop\Domain\Product\ProductOption
+            mappedBy: product
+            cascade: ["persist"]

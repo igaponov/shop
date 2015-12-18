@@ -54,6 +54,29 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: false
+        mappings:
+            ShopDomain:
+                type: yml
+                prefix: Shop\Domain
+                dir: "%kernel.root_dir%/../src/Shop/InfrastructureBundle/Resources/config/doctrine/Domain"
+                is_bundle: false
+            Role:
+                type: yml
+                prefix: Symfony\Component\Security\Core\Role
+                dir: "%kernel.root_dir%/../src/Shop/InfrastructureBundle/Resources/config/doctrine/Role"
+                is_bundle: false
+            Security:
+                type: yml
+                prefix: Shop\InfrastructureBundle\Security
+                dir: "%kernel.root_dir%/../src/Shop/InfrastructureBundle/Resources/config/doctrine/Security"
+                is_bundle: false
+            Payum:
+                type: yml
+                prefix: Shop\InfrastructureBundle\Model
+                dir: "%kernel.root_dir%/../src/Shop/InfrastructureBundle/Resources/config/doctrine/Payum"
+                is_bundle: false
+        resolve_target_entities:
+            Shop\Domain\Customer\CustomerInterface: Shop\InfrastructureBundle\Security\User
 
 # Swiftmailer Configuration
 swiftmailer:

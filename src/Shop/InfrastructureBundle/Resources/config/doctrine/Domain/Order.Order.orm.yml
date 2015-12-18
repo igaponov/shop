@@ -1,0 +1,27 @@
+Shop\Domain\Order\Order:
+    type: entity
+    table: orders
+    repositoryClass: Shop\InfrastructureBundle\Repository\ORM\OrderRepository
+    id:
+        id:
+            type: guid
+    fields:
+        paidAt:
+            type: boolean
+            nullable: true
+    embedded:
+        address:
+            class: Shop\Domain\ValueObject\Address
+            columnPrefix: false
+    oneToMany:
+        lineItems:
+            targetEntity: Shop\Domain\Order\LineItem
+            mappedBy: order
+            cascade: ["persist"]
+    manyToOne:
+        customer:
+            targetEntity: \Shop\Domain\Customer\CustomerInterface
+            joinColumn:
+                name: customer_id
+                nullable: false
+                onDelete: cascade

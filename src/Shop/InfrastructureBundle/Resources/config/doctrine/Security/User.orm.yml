@@ -1,0 +1,20 @@
+Shop\InfrastructureBundle\Security\User:
+    type: entity
+    table: users
+    repositoryClass: Shop\InfrastructureBundle\Repository\ORM\CustomerRepository
+#    id:
+#        id:
+#            type: guid
+    fields:
+        username:
+            unique: true
+        password: ~
+        salt: ~
+        role: ~
+    embedded:
+        id:
+            class: Shop\Domain\ValueObject\UuidIdentity
+            columnPrefix: false
+        address:
+            class: Shop\Domain\ValueObject\Address
+            columnPrefix: false

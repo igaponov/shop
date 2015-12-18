@@ -1,0 +1,9 @@
+Shop\Domain\Category\Category:
+    type: entity
+    table: categories
+    repositoryClass: Shop\InfrastructureBundle\Repository\ORM\CategoryRepository
+    id:
+        id:
+            type: guid
+    fields:
+        name: ~

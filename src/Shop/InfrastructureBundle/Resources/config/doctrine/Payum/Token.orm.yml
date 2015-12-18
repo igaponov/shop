@@ -1,0 +1,12 @@
+Shop\InfrastructureBundle\Model\Token:
+    type: entity
+    table: payum_tokens
+#    id:
+#        hash: ~
+#    fields:
+#        targetUrl: ~
+#        afterUrl:
+#            nullable: true
+#        gatewayName: ~
+#        details:
+#            type: object

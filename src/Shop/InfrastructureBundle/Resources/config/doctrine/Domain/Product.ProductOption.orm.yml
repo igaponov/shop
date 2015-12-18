@@ -1,0 +1,25 @@
+Shop\Domain\Product\ProductOption:
+    type: entity
+    table: product_options
+    id:
+        product:
+            associationKey: true
+        option:
+            associationKey: true
+    fields:
+        value:
+            nullable: false
+    manyToOne:
+        option:
+            targetEntity: Shop\Domain\Option\Option
+            joinColumn:
+                name: option_id
+                nullable: false
+                onDelete: cascade
+        product:
+            targetEntity: Shop\Domain\Product\Product
+            inversedBy: productOptions
+            joinColumn:
+                name: product_id
+                nullable: false
+                onDelete: cascade

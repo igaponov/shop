@@ -1,0 +1,7 @@
+Shop\Domain\ValueObject\Address:
+    type: embeddable
+    fields:
+        country: ~
+        city: ~
+        street: ~
+        zipCode: ~

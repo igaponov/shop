@@ -1,0 +1,6 @@
+Shop\Domain\ValueObject\Money:
+    type: embeddable
+    fields:
+        amount:
+            type: integer
+            column: price

@@ -1,0 +1,6 @@
+Shop\Domain\ValueObject\UuidIdentity:
+    type: embeddable
+    id:
+        value:
+            column: id
+            length: 36

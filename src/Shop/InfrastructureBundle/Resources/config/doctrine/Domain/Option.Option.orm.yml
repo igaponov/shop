@@ -1,0 +1,9 @@
+Shop\Domain\Option\Option:
+    type: entity
+    table: options
+    repositoryClass: Shop\InfrastructureBundle\Repository\ORM\OptionRepository
+    id:
+        id:
+            type: guid
+    fields:
+        name: ~

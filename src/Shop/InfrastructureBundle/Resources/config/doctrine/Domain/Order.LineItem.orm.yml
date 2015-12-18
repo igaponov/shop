@@ -1,0 +1,29 @@
+Shop\Domain\Order\LineItem:
+    type: entity
+    table: line_items
+    id:
+        order:
+            associationKey: true
+        product:
+            associationKey: true
+    embedded:
+        quantity:
+            class: Shop\Domain\ValueObject\Quantity
+            columnPrefix: false
+        price:
+            class: Shop\Domain\ValueObject\Money
+            columnPrefix: false
+    manyToOne:
+        order:
+            targetEntity: Shop\Domain\Order\Order
+            inversedBy: lineItems
+            joinColumn:
+                name: order_id
+                nullable: false
+                onDelete: cascade
+        product:
+            targetEntity: Shop\Domain\Product\Product
+            joinColumn:
+                name: product_id
+                nullable: false
+                onDelete: cascade
