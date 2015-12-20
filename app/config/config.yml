@@ -134,20 +134,6 @@ snc_redis:
             client: default
             entity_manager: default
 
-fos_http_cache:
-    cache_manager:
-        enabled: true
-    cache_control:
-        defaults:
-            overwrite: true
-        rules:
-            -
-                match:
-                    attributes:
-                        _route: homepage
-                headers:
-                    cache_control: { s_maxage: 3600 }
-
 event_bus:
     logging:
         enabled: %kernel.debug%

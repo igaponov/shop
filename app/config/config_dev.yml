@@ -34,7 +34,16 @@ monolog:
             channels: ["doctrine"]
 
 fos_http_cache:
-    proxy_client:
-        symfony:
-            servers: 127.0.0.1:8000
-            base_url: shop.dev
+    cache_control:
+        defaults:
+            overwrite: true
+        rules:
+            -
+                match:
+                    path: ^/
+                headers:
+                    cache_control:
+                        private: false
+                        public: false
+                        max_age: 0
+                        s_maxage: 0

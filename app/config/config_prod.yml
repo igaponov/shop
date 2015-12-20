@@ -19,3 +19,24 @@ fos_http_cache:
         varnish:
             servers: shop.dev
             base_url: shop.dev
+    cache_control:
+        defaults:
+            overwrite: true
+        rules:
+            -
+                match:
+                    attributes:
+                        _route: homepage
+                headers:
+                    cache_control: { s_maxage: 3600 }
+    invalidation:
+        rules:
+            -
+                match:
+                    methods: [POST]
+                    attributes:
+                        _route: "admin_product|admin_product_create"
+                routes:
+                    homepage: ~
+                    products: ~
+                    product: ~
