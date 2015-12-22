@@ -25,6 +25,14 @@ security:
             logout:
                 path:   /logout
                 target: /
+            oauth:
+                failure_path: /en/login
+                login_path: /en/login
+                resource_owners:
+                    facebook: "/login_check_facebook"
+                    google: "/login_check_google"
+                oauth_user_provider:
+                    service: shop.security.oauth_user_provider
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }

@@ -6,12 +6,22 @@
         {{ form_row(form.username) }}
         {{ form_row(form.password) }}
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-4">
+            <div class="col-sm-3">
                 {{ form_widget(form.submit) }}
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
+                <a class="btn btn-primary" href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}">
+                    Facebook
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a class="btn btn-success" href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}">
+                    Google
+                </a>
+            </div>
+            <div class="col-sm-3">
                 <p class="form-control-static">
-                    <a href="{{ path('login_route') }}">{% trans %}title.login{% endtrans %}</a>
+                    <a href="{{ path('login_route') }}">{% trans %}action.login{% endtrans %}</a>
                 </p>
             </div>
         </div>

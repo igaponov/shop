@@ -8,7 +8,7 @@ use Shop\Domain\ValueObject\UuidIdentity;
 use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class User implements CustomerInterface, UserInterface
+class User implements CustomerInterface, UserInterface, OAuthUserInterface
 {
     const ROLE_ADMIN = 'ROLE_ADMIN';
 
@@ -38,6 +38,16 @@ class User implements CustomerInterface, UserInterface
      * @var Address
      */
     private $address;
+
+    /**
+     * @var string
+     */
+    private $facebookId;
+
+    /**
+     * @var string
+     */
+    private $googleId;
 
     public function __construct(
         UuidIdentity $id,
@@ -133,5 +143,45 @@ class User implements CustomerInterface, UserInterface
     public function setU($u)
     {
         $this->username = $u;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getGoogleID()
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addGoogleID($id)
+    {
+        if ($this->googleId) {
+            throw new \RuntimeException('Account already has an ID');
+        }
+
+        $this->googleId = $id;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getFacebookID()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addFacebookID($id)
+    {
+        if ($this->facebookId) {
+            throw new \RuntimeException('Account already has an ID');
+        }
+
+        $this->facebookId = $id;
     }
 }

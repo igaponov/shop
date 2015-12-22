@@ -21,3 +21,8 @@ parameters:
     paypal.express_checkout.password: pass
     paypal.express_checkout.signature: sign
     paypal.express_checkout.sandbox: true
+
+    facebook_client_id: ~
+    facebook_client_secret: ~
+    google_client_id: ~
+    google_client_secret: ~

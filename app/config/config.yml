@@ -147,3 +147,23 @@ stof_doctrine_extensions:
     orm:
         default:
             timestampable: true
+
+hwi_oauth:
+    firewall_name: main
+    resource_owners:
+        facebook:
+            type:                facebook
+            client_id:           %facebook_client_id%
+            client_secret:       %facebook_client_secret%
+            scope:               "email"
+            paths:
+                email: email
+            options:
+                display: page
+        google:
+            type:                google
+            client_id:           %google_client_id%
+            client_secret:       %google_client_secret%
+            scope:              "https://www.googleapis.com/auth/userinfo.email"
+            paths:
+                email: email

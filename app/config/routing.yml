@@ -20,6 +20,20 @@ payum_authorize:
 payum_notify:
     resource: "@PayumBundle/Resources/config/routing/notify.xml"
 
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+
+facebook_login:
+    path: /login_check_facebook
+
+google_login:
+    path: /login_check_google
+
 shop:
     resource: "@ShopInfrastructureBundle/Resources/config/routing.yml"
     prefix:   /{_locale}

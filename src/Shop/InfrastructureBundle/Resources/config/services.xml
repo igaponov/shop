@@ -65,5 +65,14 @@
             <argument id="product_view_repository" type="service"/>
             <argument type="string">%locales%</argument>
         </service>
+
+        <service class="Shop\InfrastructureBundle\Security\OAuthUserProvider" id="shop.security.oauth_user_provider">
+            <argument id="doctrine" type="service"/>
+            <argument type="string">\Shop\InfrastructureBundle\Security\User</argument>
+            <argument type="collection">
+                <argument type="string" key="facebook">facebookId</argument>
+                <argument type="string" key="google">googleId</argument>
+            </argument>
+        </service>
     </services>
 </container>
